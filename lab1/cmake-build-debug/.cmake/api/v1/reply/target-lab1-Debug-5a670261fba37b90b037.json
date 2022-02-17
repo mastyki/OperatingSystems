@@ -101,7 +101,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
+			"path" : "Creator/CreatorMain.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
