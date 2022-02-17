@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lab1.exe"
+			"path" : "Reporter.exe"
 		},
 		{
-			"path" : "lab1.pdb"
+			"path" : "Reporter.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -59,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "lab1::@6890427a1f51a3e7e1df",
+	"id" : "Reporter::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -79,8 +79,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "lab1",
-	"nameOnDisk" : "lab1.exe",
+	"name" : "Reporter",
+	"nameOnDisk" : "Reporter.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -101,7 +101,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Creator/CreatorMain.cpp",
+			"path" : "Reporter/ReporterMain.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

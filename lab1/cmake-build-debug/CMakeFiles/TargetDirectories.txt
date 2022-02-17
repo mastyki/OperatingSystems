@@ -1,3 +1,4 @@
-C:/Users/lizam/Documents/GitHub/OperatingSystems/lab1/cmake-build-debug/CMakeFiles/lab1.dir
 C:/Users/lizam/Documents/GitHub/OperatingSystems/lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lizam/Documents/GitHub/OperatingSystems/lab1/cmake-build-debug/CMakeFiles/Reporter.dir
+C:/Users/lizam/Documents/GitHub/OperatingSystems/lab1/cmake-build-debug/CMakeFiles/Creator.dir
 C:/Users/lizam/Documents/GitHub/OperatingSystems/lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

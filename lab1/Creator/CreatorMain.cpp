@@ -7,16 +7,16 @@ struct employee
     double hours;
 };
 void recordEmployee(FILE* file){
-    employee newEmployee;
-    printf("Input next record for the employee");
-    printf("\nNumber: ");
-    scanf("%d",&newEmployee.num);
-    printf("\nName: ");
-    scanf("%s",&newEmployee.name);
-    printf("\nHours: ");
-    scanf("%f",&newEmployee.hours);
-    printf("\n");
-    fwrite(&newEmployee,sizeof(employee), 1, file);
+    employee newEmployee = {};
+    printf("Input new employee data\n");
+    printf("Number:");
+    scanf("%d", &newEmployee.num);
+    printf("Name:");
+    scanf("%s",newEmployee.name);
+    printf("Hours:");
+    scanf("%lf",&newEmployee.hours);
+
+    fwrite(&newEmployee,sizeof(employee),1,file);
 }
 
 int main(int argc, char* args[]) {
@@ -28,7 +28,6 @@ int main(int argc, char* args[]) {
         std::cout << "Incorrect number of arguments!"<< std::endl <<":(";
         return -1;
     }
-    std::cout << argc << std::endl;
     fName = args[1];
     numOfRecords = atoi(args[2]);
 
