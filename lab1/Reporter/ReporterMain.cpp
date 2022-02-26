@@ -46,6 +46,7 @@ int main(int argc, char* args[]) {
 
         fclose(outFile);
         fclose(inFile);
+
     }
     catch(const char* exception){
         std::cerr << "Error: " << exception << std:: endl;

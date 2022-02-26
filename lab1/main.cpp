@@ -52,16 +52,18 @@ int main(int argc, char* args[]) {
         scanf("%s",reportName);
         printf("Salary:");
         scanf("%s",salary);
-        size = strlen("code ") + strlen(reportName) + strlen(salary) + 2;
+        size = strlen("code ") + strlen(args[1]) + strlen(reportName) + strlen(salary) + 3;
         commandLineArgument = new char[size];
         commandLineArgument[0] = 0;
-        strcat(commandLineArgument,"code");
+        strcat(commandLineArgument,"code ");
+        strcat(commandLineArgument,args[1]);
+        strcat(commandLineArgument," ");
         strcat(commandLineArgument,reportName);
         strcat(commandLineArgument," ");
         strcat(commandLineArgument,salary);
         ZeroMemory(&si,sizeof(STARTUPINFO));
         si.cb = sizeof(STARTUPINFO);
-        CreateProcessA("ReporterMain.exe",commandLineArgument,NULL,NULL,
+        CreateProcessA("Reporter.exe",commandLineArgument,NULL,NULL,
                        FALSE,NULL,NULL,NULL,&si,&piApp);
         WaitForSingleObject(piApp.hThread,INFINITE);
 
