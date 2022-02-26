@@ -13,17 +13,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="027c6be0-9f91-49c4-b234-1ad68fedae06" name="Changes" comment="">
+    <list default="true" id="027c6be0-9f91-49c4-b234-1ad68fedae06" name="Changes" comment="Exceptions handeling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Creator/CreatorMain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Creator/CreatorMain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reporter/ReporterMain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reporter/ReporterMain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab1.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lab1.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/lab1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/lab1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +94,16 @@
       <workItem from="1645199767846" duration="5290000" />
       <workItem from="1645264064326" duration="653000" />
       <workItem from="1645383533691" duration="907000" />
-      <workItem from="1645854871313" duration="667000" />
+      <workItem from="1645854871313" duration="708000" />
     </task>
+    <task id="LOCAL-00001" summary="Exceptions handeling">
+      <created>1645855606010</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645855606010</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,5 +119,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Exceptions handeling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exceptions handeling" />
   </component>
 </project>
