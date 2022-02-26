@@ -1,5 +1,0 @@
-Report on file "test.zub"
-Employee number     |Name           |Hours     |Salary         
-0                   |Maksimka       |0.00      |0.00           
-1                   |Antonio        |-1.00     |-1000.00       
-0                   |John           |4.00      |4000.00        

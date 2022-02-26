@@ -20,24 +20,28 @@ void recordEmployee(FILE* file){
 }
 
 int main(int argc, char* args[]) {
+    try{
+        int numOfRecords = 0;
+        char* fName;
+        if(argc != 3) {
+            throw "Incorrect number of arguments!\n";
+        }
+        fName = args[1];
+        numOfRecords = atoi(args[2]);
 
-
-    int numOfRecords = 0;
-    char* fName;
-    if(argc != 3) {
-        std::cout << "Incorrect number of arguments!"<< std::endl <<":(";
-        return -1;
-    }
-    fName = args[1];
-    numOfRecords = atoi(args[2]);
-
-    FILE* outFile;
-    outFile = fopen(fName, "wb");
-    if(outFile){
+        FILE* outFile;
+        outFile = fopen(fName, "wb");
+        if(!outFile){
+            throw "No such file\n";
+        }
         for(int i = 0; i < numOfRecords; i++){
             recordEmployee(outFile);
         }
         fclose(outFile);
     }
+    catch(const char* exception){
+        std::cerr << "Error: " << exception << std:: endl;
+    }
+
     return 0;
 }

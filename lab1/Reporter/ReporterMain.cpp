@@ -17,32 +17,39 @@ void addHeaderToOutputFile(FILE* outputFile, char* finName){
 }
 
 int main(int argc, char* args[]) {
-    int salary = 0;
-    char* finName;
-    char* foutName;
+    try{
+        int salary = 0;
+        char* finName;
+        char* foutName;
 
-    if(argc != 4) {
-        std::cout << "Incorrect number of arguments!"<< std::endl <<":(";
-    }
-    finName = args[1];
-    foutName = args[2];
-    salary = atoi(args[3]);
+        if(argc != 4) {
+            throw "Incorrect number of arguments!\n";
+        }
+        finName = args[1];
+        foutName = args[2];
+        salary = atoi(args[3]);
 
-    FILE* outFile, *inFile;
-    outFile = fopen(foutName, "w");
-    inFile = fopen(finName,"rb");
-    if(outFile&&inFile){
+        FILE* outFile, *inFile;
+        outFile = fopen(foutName, "w");
+        inFile = fopen(finName,"rb");
+        if(!outFile || !inFile){
+           throw "No such file\n";
+        }
         addHeaderToOutputFile(outFile,finName);
         employee newEmployee;
         while (!feof(inFile)){
             fread(&newEmployee, sizeof(employee), 1, inFile);
             if (!feof(inFile)) {
-            addEployeeToOutputFile(outFile,newEmployee,salary);
+                addEployeeToOutputFile(outFile,newEmployee,salary);
             }
         }
-    }
 
         fclose(outFile);
+        fclose(inFile);
+    }
+    catch(const char* exception){
+        std::cerr << "Error: " << exception << std:: endl;
+    }
 
     return 0;
 }

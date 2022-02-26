@@ -20,27 +20,56 @@ BOOL CreateProcess
         );
 int main(int argc, char* args[]) {
 
-    if(argc != 3) {
-        printf("Incorrect number of arguments!");
-    } else {
-
+    try {
+        if(argc != 3) {
+           throw "Incorrect number of arguments!";
+        }
         STARTUPINFO si;
         PROCESS_INFORMATION piApp;
 
         ZeroMemory(&si,sizeof(STARTUPINFO));
         si.cb = sizeof(STARTUPINFO);
 
-        std::string numberCount = args[2];
-        std::string binaryFileName = args[1];
-        binaryFileName = binaryFileName;
-        std::string commandLineArguments = "code" + binaryFileName +" "+ numberCount;
-        char* argument = const_cast<char *>(commandLineArguments.c_str());
+        int size = strlen("code ") + strlen(args[1]) + strlen(args[2]) + 2;
+        char* commandLineArgument = new char[size];
+        commandLineArgument[0] = 0;
+        strcat(commandLineArgument,"code ");
+        strcat(commandLineArgument,args[1]);
+        strcat(commandLineArgument," ");
+        strcat(commandLineArgument,args[2]);
 
-        CreateProcessA("Creator.exe",argument,NULL,NULL,
+        CreateProcessA("Creator.exe",commandLineArgument,NULL,NULL,
                        FALSE,NULL,NULL,NULL,&si,&piApp);
         WaitForSingleObject(piApp.hThread,INFINITE);
+
         CloseHandle(piApp.hThread);
         CloseHandle(piApp.hProcess);
+
+        char reportName[256];
+        char salary[32];
+        printf("Input name of report file and salary\n");
+        printf("Report file name:");
+        scanf("%s",reportName);
+        printf("Salary:");
+        scanf("%s",salary);
+        size = strlen("code ") + strlen(reportName) + strlen(salary) + 2;
+        commandLineArgument = new char[size];
+        commandLineArgument[0] = 0;
+        strcat(commandLineArgument,"code");
+        strcat(commandLineArgument,reportName);
+        strcat(commandLineArgument," ");
+        strcat(commandLineArgument,salary);
+        ZeroMemory(&si,sizeof(STARTUPINFO));
+        si.cb = sizeof(STARTUPINFO);
+        CreateProcessA("ReporterMain.exe",commandLineArgument,NULL,NULL,
+                       FALSE,NULL,NULL,NULL,&si,&piApp);
+        WaitForSingleObject(piApp.hThread,INFINITE);
+
+        CloseHandle(piApp.hThread);
+        CloseHandle(piApp.hProcess);
+    }
+    catch(const char* exception){
+        std::cerr << "Error: " << exception << std:: endl;
     }
 
     return 0;
