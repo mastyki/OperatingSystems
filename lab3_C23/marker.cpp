@@ -3,8 +3,12 @@
 #include <iostream>
 #include <windows.h>
 
-void marker(int* array, int arrSize, int orderNumber){
+void Marker::marker(int orderNumber){
     srand(orderNumber);
+    int* changedElementsIndexes;
+    changedElementsIndexes = new int[arrSize];
+    std::fill(changedElementsIndexes, changedElementsIndexes + arrSize, -1);
+    int k;
     int randomNum;
     int numOfMarks = 0;
     bool signal = true;
@@ -20,10 +24,31 @@ void marker(int* array, int arrSize, int orderNumber){
             numOfMarks++;
         }
         else{
-            std::cout<<"Order number of the thread: "<< orderNumber;
-            std::cout<<"Num of marked elements: "<< numOfMarks;
-            std::cout<<"Index of element can not to change: "<< randomNum;
-            signal = false;
+            {
+                std::unique_lock<std::mutex> locker(lockPrint);
+                std::cout<<"Order number of the thread: "<< orderNumber;
+                std::cout<<"Num of marked elements: "<< numOfMarks;
+                std::cout<<"Index of element can not to change: "<< randomNum;
+            }
+
+            {
+                std::unique_lock <std::mutex> locker(lockQueue);
+                markersWithErrorsQueue.push(orderNumber);
+                markerStop.notify_one();
+
+            }
+            {
+                std::unique_lock<std::mutex> locker(lockQueue);
+                mainMade.wait(locker);
+                if(markerToDestroy == orderNumber) {
+                    signal = false;
+                    k = 0;
+                    while(changedElementsIndexes[k] != -1) {
+                        array[changedElementsIndexes[k]] = 0;
+                        ++k;
+                    }
+                }
+            }
         }
     }
 

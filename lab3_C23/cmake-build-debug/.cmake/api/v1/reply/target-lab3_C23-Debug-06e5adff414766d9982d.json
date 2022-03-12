@@ -121,7 +121,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "cmake-build-debug/marker.h",
+			"path" : "marker.h",
 			"sourceGroupIndex" : 1
 		}
 	],
