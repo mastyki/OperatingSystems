@@ -9,6 +9,6 @@ int main() {
     std:: cin >> numOfThreads;
     array = new int[arrSize];
     std::fill(array, array + arrSize, 0);
-    
+
     return 0;
 }
