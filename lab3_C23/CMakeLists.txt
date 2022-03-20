@@ -3,4 +3,4 @@ project(lab3_C23)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(lab3_C23 main.cpp marker.cpp marker.h)
+add_executable(lab3_C23 main.cpp)

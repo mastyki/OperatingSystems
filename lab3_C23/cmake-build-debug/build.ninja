@@ -55,12 +55,6 @@ build CMakeFiles/lab3_C23.dir/main.cpp.obj: CXX_COMPILER__lab3_C23_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\lab3_C23.dir
   OBJECT_FILE_DIR = CMakeFiles\lab3_C23.dir
 
-build CMakeFiles/lab3_C23.dir/marker.cpp.obj: CXX_COMPILER__lab3_C23_Debug C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab3_C23/marker.cpp || cmake_object_order_depends_target_lab3_C23
-  DEP_FILE = CMakeFiles\lab3_C23.dir\marker.cpp.obj.d
-  FLAGS = -g -std=gnu++23
-  OBJECT_DIR = CMakeFiles\lab3_C23.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab3_C23.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target lab3_C23
@@ -69,7 +63,7 @@ build CMakeFiles/lab3_C23.dir/marker.cpp.obj: CXX_COMPILER__lab3_C23_Debug C$:/U
 #############################################
 # Link the executable lab3_C23.exe
 
-build lab3_C23.exe: CXX_EXECUTABLE_LINKER__lab3_C23_Debug CMakeFiles/lab3_C23.dir/main.cpp.obj CMakeFiles/lab3_C23.dir/marker.cpp.obj
+build lab3_C23.exe: CXX_EXECUTABLE_LINKER__lab3_C23_Debug CMakeFiles/lab3_C23.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab3_C23.dir
