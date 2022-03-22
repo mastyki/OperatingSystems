@@ -3,16 +3,13 @@
 #include <condition_variable>
 #include <windows.h>
 #include <vector>
-std::mutex mtxPrint;
-std::mutex mtxArray;
-std::mutex mtxWorker;
-std::condition_variable cvWorker;
-std::condition_variable cvMain;
+std::mutex mtx,mtx1,mtx2,mtx3;
+std::condition_variable cv,cv1,cv2;
 int* array;
 int arrSize;
 int markerToDestroy = -1;
 int numOfFinishedThreads;
-bool continueDestroy = false, continueWork= false,isFinished = false;
+bool continueDestroy = false, destructionFinished = false,continueWork =false;
 void marker(int orderNumber){
     srand(orderNumber);
     int* changedElementsIndexes;
@@ -27,15 +24,19 @@ void marker(int orderNumber){
         randomNum = rand();
         randomNum %= arrSize;
         if (array[randomNum] == 0) {
-            std::unique_lock<std::mutex> ulArray(mtxArray);
+            std::unique_lock<std::mutex> ul(mtx,std::defer_lock);
             Sleep(5);
+
+            ul.lock();
             array[randomNum] = orderNumber;
+            ul.unlock();
             Sleep(5);
+            changedElementsIndexes[numOfMarks] = randomNum;
             numOfMarks++;
-            ulArray.unlock();
+
         } else {
             {
-                std::lock_guard<std::mutex> locker(mtxPrint);
+                std::lock_guard<std::mutex> locker(mtx);
 
                 std::cout << "Order number of the thread: " << orderNumber<< std::endl;
                 std::cout << "Num of marked elements: " << numOfMarks << std::endl;
@@ -44,34 +45,45 @@ void marker(int orderNumber){
             }
 
             {
-                std::unique_lock<std::mutex> locker(mtxWorker);
+
                 numOfFinishedThreads++;
-                cvWorker.notify_one();
+                cv.notify_one();
             }
             {
-                std::unique_lock<std::mutex> locker(mtxWorker);
+
                 std::cout << "Waiting... \n";
-                cvMain.wait(locker,[&](){
+                std::unique_lock<std::mutex> locker(mtx);
+                cv.wait(locker, [&]() {
                     return continueDestroy;
                 });
             }
             if(orderNumber==markerToDestroy){
-                for (int i = 0; i < numOfMarks; ++i) {
-                    array[changedElementsIndexes[i]] = 0;
+                {
+
+                    std::lock_guard<std::mutex> locker(mtx);
+                    for (int i = 0; i < numOfMarks; ++i) {
+                        array[changedElementsIndexes[i]] = 0;
+
+                    }
+                    std::cout << "dest... \n";
+                    destructionFinished = true;
+                    cv.notify_one();
                 }
-                isFinished = true;
-                cvWorker.notify_one();
+
                 signal = false;
             }
-            else{{
-                    std::unique_lock<std::mutex> locker(mtxWorker);
+            else{
+                {
+
                     std::cout << "Waiting... \n";
-                    cvMain.wait(locker,[&](){
+                    std::unique_lock<std::mutex> locker(mtx);
+                    cv1.wait(locker, [&]() {
                         return continueWork;
                     });
                 }
+                std::cout << "stop wait... \n";
                 signal = true;
-                continue;
+
 
             }
 
@@ -87,7 +99,6 @@ void printArray(){
 int main() {
 
 
-
     int numOfThreads;
     std::cout << "Input array size: ";
     std:: cin >> arrSize;
@@ -100,31 +111,41 @@ int main() {
     for (int i = 0; i < numOfThreads; ++i) {
         threads.push_back(std::thread(marker,i+1 ));
     }
-   while(numOfThreads){
-       std::unique_lock<std::mutex> locker(mtxWorker);
-       cvWorker.wait(locker,[&](){
-           return numOfThreads == numOfFinishedThreads;
-       });
-       numOfFinishedThreads =0;
-       numOfThreads--;
-       std::cout<<"Array: ";
-       printArray();
-       std::cout << "Input number of thread to destroy: ";
-       std:: cin >> markerToDestroy;
-       continueDestroy = true;
-       cvMain.notify_all();
 
-       cvWorker.wait(locker,[&](){
-           return true;
-       });
+    while(numOfThreads) {
 
-       std::cout<<"Array: ";
-       printArray();
-       continueWork = true;
-       cvMain.notify_all();
+        {
+            std::unique_lock<std::mutex> locker(mtx);
+            cv.wait(locker, [&]() {
+                return numOfThreads == numOfFinishedThreads;
+            });
+        }
+        continueWork = false;
+        numOfFinishedThreads = 0;
+        numOfThreads--;
+        std::cout << "Array: ";
+        printArray();
+        std::cout << "Input number of thread to destroy: ";
+        std::cin >> markerToDestroy;
+        continueDestroy = true;
+        cv.notify_all();
 
-   }
-    for (int i = 0; i < numOfThreads; ++i) {
+
+        std::cout << "Array: ";
+        {
+            std::unique_lock<std::mutex> locker1(mtx);
+            cv.wait(locker1, [&]() {
+                return destructionFinished;
+            });
+            printArray();
+            continueWork = true;
+        }
+        cv1.notify_all();
+        continueDestroy = false;
+        destructionFinished = false;
+        numOfThreads--;
+    }
+    for (int i = 0; i < threads.size(); ++i) {
         threads[i].join();
     }
     return 0;
