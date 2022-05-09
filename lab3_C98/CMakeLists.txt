@@ -3,4 +3,4 @@ project(lab3_C98)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(lab3_C98 main.cpp)
+add_executable(lab3_C98 main.cpp header.h)
