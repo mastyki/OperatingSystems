@@ -1,6 +1,8 @@
 #include <iostream>
+#include <Windows.h>
+#include "header.h"
+using namespace std;
+CRITICAL_SECTION cs;
+int* arr;
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+
