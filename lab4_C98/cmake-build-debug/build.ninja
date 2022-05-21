@@ -49,19 +49,13 @@ cmake_ninja_workdir = C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98
 
 build cmake_object_order_depends_target_lab4_C98: phony || CMakeFiles/lab4_C98.dir
 
-build CMakeFiles/lab4_C98.dir/main.cpp.obj: CXX_COMPILER__lab4_C98_Debug C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/main.cpp || cmake_object_order_depends_target_lab4_C98
-  DEP_FILE = CMakeFiles\lab4_C98.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++98
-  OBJECT_DIR = CMakeFiles\lab4_C98.dir
-  OBJECT_FILE_DIR = CMakeFiles\lab4_C98.dir
-
 build CMakeFiles/lab4_C98.dir/receiver.cpp.obj: CXX_COMPILER__lab4_C98_Debug C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/receiver.cpp || cmake_object_order_depends_target_lab4_C98
   DEP_FILE = CMakeFiles\lab4_C98.dir\receiver.cpp.obj.d
   FLAGS = -g -std=gnu++98
   OBJECT_DIR = CMakeFiles\lab4_C98.dir
   OBJECT_FILE_DIR = CMakeFiles\lab4_C98.dir
 
-build CMakeFiles/lab4_C98.dir/sender.cpp.obj: CXX_COMPILER__lab4_C98_Debug C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/cmake-build-debug/sender.cpp || cmake_object_order_depends_target_lab4_C98
+build CMakeFiles/lab4_C98.dir/sender.cpp.obj: CXX_COMPILER__lab4_C98_Debug C$:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/sender.cpp || cmake_object_order_depends_target_lab4_C98
   DEP_FILE = CMakeFiles\lab4_C98.dir\sender.cpp.obj.d
   FLAGS = -g -std=gnu++98
   OBJECT_DIR = CMakeFiles\lab4_C98.dir
@@ -75,7 +69,7 @@ build CMakeFiles/lab4_C98.dir/sender.cpp.obj: CXX_COMPILER__lab4_C98_Debug C$:/U
 #############################################
 # Link the executable lab4_C98.exe
 
-build lab4_C98.exe: CXX_EXECUTABLE_LINKER__lab4_C98_Debug CMakeFiles/lab4_C98.dir/main.cpp.obj CMakeFiles/lab4_C98.dir/receiver.cpp.obj CMakeFiles/lab4_C98.dir/sender.cpp.obj
+build lab4_C98.exe: CXX_EXECUTABLE_LINKER__lab4_C98_Debug CMakeFiles/lab4_C98.dir/receiver.cpp.obj CMakeFiles/lab4_C98.dir/sender.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lab4_C98.dir
