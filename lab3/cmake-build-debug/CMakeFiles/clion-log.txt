@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\lizam\Documents\GitHub\OperatingSystems\lab3 Select CMakeLists.txt
