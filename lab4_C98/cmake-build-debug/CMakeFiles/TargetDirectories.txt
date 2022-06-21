@@ -1,3 +1,0 @@
-C:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/cmake-build-debug/CMakeFiles/lab4_C98.dir
-C:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/lizam/Documents/GitHub/OperatingSystems/lab4_C98/cmake-build-debug/CMakeFiles/rebuild_cache.dir
