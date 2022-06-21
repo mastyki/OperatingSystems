@@ -3,10 +3,13 @@
 #include <string>
 #include <stdlib.h>
 #include <fstream>
+
+const int FILE_NAME_SIZE = 100;
 CRITICAL_SECTION criticalSection;
+
 int main(){
     std::cout<<"Input name of the file"<<std::endl;
-    char filename[100];
+    char filename[FILE_NAME_SIZE];
     std::cin>>filename;
     std::cout<<"Input number of the sender processes"<<std::endl;
     int countOfSender;
@@ -27,9 +30,9 @@ int main(){
         ZeroMemory(&sendersSI[i],sizeof(STARTUPINFO));
         sendersSI[i].cb=sizeof(STARTUPINFO);
         ZeroMemory(&sendersPI[i], sizeof(PROCESS_INFORMATION));
-        char argg[10];
-        strcat(argg,"Event ");
-        strcat(argg,itoa(i,buff,10));
+        char args[10];
+        strcat(args,"Event ");
+        strcat(args,itoa(i,buff,10));
         SenderEventsToSync[i]=CreateEventA(&securityAtb,FALSE, FALSE,argg);
         strcat(arg," Event ");
         strcat(arg, itoa(i,buff,10));
@@ -44,10 +47,10 @@ int main(){
     SetEvent(eventToStart);
 
     while(WaitForMultipleObjects(countOfSender,senders,TRUE,0)==WAIT_TIMEOUT){
-        std::cout<<"Input 9 for trying to read file";
+        std::cout<<"Input --r for trying to read file";
         std::string text;
         std::cin>>text;
-        if(text.compare("9")!=0){
+        if(text.compare("--r")!=0){
             break;
         }
         std::string message;
