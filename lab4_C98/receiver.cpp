@@ -17,7 +17,7 @@ int main(){
     HANDLE* SenderEventsToSync = new HANDLE[countOfSender];
     HANDLE* senders = new HANDLE[countOfSender];
     std::fstream fin(filename,std::ios_base::trunc | std::ios_base::out | std::ios_base::binary | std::ios_base::in);
-    const char* appName="C:\\OperatingSystems\\LAB-4\\sender.exe";
+    const char* appName="C:\\Users\\lizam\\Documents\\GitHub\\OperatingSystems\\lab4_C98.exe";
     SECURITY_ATTRIBUTES securityAtb={sizeof(SECURITY_ATTRIBUTES),0, TRUE};
     HANDLE eventToStart=CreateEventA(&securityAtb, FALSE,FALSE,"SenderStartEvent");
     for(int i = 0;i < countOfSender; i++){
