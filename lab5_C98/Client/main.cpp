@@ -4,13 +4,12 @@
 #include "employee.h"
 
 const char pipeName[30] = "\\\\.\\pipe\\pipe_name";
-
 const int MESSAGE_SIZE = 10;
 
 const int CONNECTION_WAIT_TIME = 5000;
 
-void sent_message(HANDLE hPipe){
-    std::cout << "To quit press Ctrl+Z \n" << std::endl;
+void messaging(HANDLE hPipe){
+    std::cout << "\n\nTo quit press Ctrl+Z" << std::endl;
     while(true){
         char command[MESSAGE_SIZE];
         std::cout << "Enter r/w (to read/write) command and ID of employee: \n>";
