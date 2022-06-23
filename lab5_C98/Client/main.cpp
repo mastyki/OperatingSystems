@@ -24,7 +24,6 @@ void messaging(HANDLE hPipe){
             getch();
             return;
         }
-        //receiving the answer
         employee emp;
         DWORD readBytes;
         bool isRead = ReadFile(hPipe, &emp, sizeof(emp), &readBytes, NULL);
@@ -37,7 +36,6 @@ void messaging(HANDLE hPipe){
                 continue;
             }
             else {
-                //if everything is correct, received an emp
                 emp.print(std::cout);
                 if('w' == command[0]) {
                     std::cout << "Enter ID, name and working hours of the employee:\n>" << std::flush;
@@ -80,7 +78,6 @@ int main(int argc, char** argv) {
             break;
         }
         if(!WaitNamedPipe(pipeName, CONNECTION_WAIT_TIME)){
-            std::cout << "5 second wait timed out." << std::endl;
             getch();
             return 0;
         }
